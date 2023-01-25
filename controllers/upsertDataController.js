@@ -1,6 +1,6 @@
 import axios from "axios";
 import WeatherModel from "../models/weatherDB.js";
-const weatherController = async (req, res) => {
+const updateDatacontroller = async (req, res) => {
   const locations = [
     "Kolkata",
     "Delhi",
@@ -12,16 +12,26 @@ const weatherController = async (req, res) => {
     "Goa",
     "Surat",
     "Bhubaneswar",
+    "Patna",
+    "Ranchi",
     "Siliguri",
     "Dhaka",
     "Chittagong",
     "Khulna",
-    "Rangpur",
     "Sylhet",
     "Rajshahi",
-    "Barishal",
-    "Mymensingh",
-    
+    "Borishal",
+    "Paris",
+    "London",
+    "Barcelona",
+    "Madrid",
+    "Amsterdam",
+    "Rome",
+    "Munich",
+    "Zurich",
+    "Milan",
+    "Berlin",
+    "Istanbul"
   ];
   try {
     for (var i = 0; i < locations.length; i++) {
@@ -33,15 +43,21 @@ const weatherController = async (req, res) => {
         coord: apidata.data.coord,
         name: apidata.data.name,
         main: apidata.data.main,
+        weather:apidata.data.weather[0]
       };
-      const unit = new WeatherModel(singleData);
-      console.log(unit);
-      await unit.save();
+      //   const unit = WeatherModel(singleData);
+      //   console.log(unit);
+      //   await unit.save();
+      const update = await WeatherModel.replaceOne(
+        { name: apidata.data.name },
+        singleData,
+        { upsert: true }
+      );
     }
 
-    res.status(200).send("hi");
+    res.status(200).send("lol");
   } catch (error) {
     console.log(error);
   }
 };
-export default weatherController;
+export default updateDatacontroller

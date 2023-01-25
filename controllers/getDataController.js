@@ -1,5 +1,6 @@
 import WeatherModel from "../models/weatherDB.js"
 const getDataController = async (req,res) =>{
+    
     try {
         const data = await WeatherModel.find({})
         res.status(201).send(data)

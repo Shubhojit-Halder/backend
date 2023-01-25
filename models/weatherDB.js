@@ -12,6 +12,10 @@ const WeatherSchema = new mongoose.Schema({
     type: Object,
     required: true,
   },
+  weather:{
+    type: Object,
+    required: true,
+  }
 });
 
 const WeatherModel = new mongoose.model("weatherdata", WeatherSchema);
