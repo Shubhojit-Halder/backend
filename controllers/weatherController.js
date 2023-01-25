@@ -11,10 +11,16 @@ const weatherController = async (req, res) => {
     "Pune",
     "Goa",
     "Surat",
-    "Rajkot",
-    "Puri",
     "Bhubaneswar",
-    "",
+    "Siliguri",
+    "Dhaka",
+    "Chittagong",
+    "Khulna",
+    "Rangpur",
+    "Sylhet",
+    "Rajshahi",
+    "Barishal",
+    "Mymensingh"
   ];
   try {
     for (var i = 0; i < locations.length; i++) {
