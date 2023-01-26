@@ -44,10 +44,8 @@ const updateDatacontroller = async (req, res) => {
         name: apidata.data.name,
         main: apidata.data.main,
         weather:apidata.data.weather[0]
+
       };
-      //   const unit = WeatherModel(singleData);
-      //   console.log(unit);
-      //   await unit.save();
       const update = await WeatherModel.replaceOne(
         { name: apidata.data.name },
         singleData,
