@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+
+//Database model declaration
 const WeatherSchema = new mongoose.Schema({
   coord: {
     type: Object,

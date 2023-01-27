@@ -1,3 +1,4 @@
+//Created an array of locations for fetching weather data
 export const locations = [
   "Hyderabad",
   "Delhi",

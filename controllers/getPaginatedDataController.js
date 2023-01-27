@@ -1,3 +1,4 @@
+//API to get paginated data 
 import WeatherModel from "../models/weatherDB.js";
 const getPaginatedDataController = async (req, res) => {
   try {

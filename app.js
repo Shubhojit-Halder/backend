@@ -5,13 +5,17 @@ import ConnectDB from "./db/connectDB.js";
 import axios from "axios";
 import { locations } from "./Static/locations.js";
 import WeatherModel from "./models/weatherDB.js";
+
+//connection to database
 const DATABASE_URL =
   process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/weatherdata";
+const BASE_URL='https://weatheroo.onrender.com/'
 ConnectDB(DATABASE_URL);
+
 
 const app = express();
 
-app.use(cors());
+app.use(cors()); //to get rid of cors of error used this
 
 const port = process.env.PORT || 8000;
 
@@ -20,14 +24,14 @@ app.listen(port, () => {
   console.log(`listening to port ${port} at http://localhost:${port}`);
 });
 
+
+//inserted and updating data through this function at an interval of 5 mins
 setInterval(async () => {
   for (var i = 0; i < locations.length; i++) {
     const apiData = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${locations[i]}&appid=a96360603bfc573d231821507d4ee9de&units=metric`
     );
-    // .then((res) => {
     try {
-      // console.log(res.data.coord, res.data.name);
       const singleData = {
         coord: apiData.data.coord,
         name: apiData.data.name,
@@ -44,4 +48,4 @@ setInterval(async () => {
       console.log(`${error} at set`);
     }
   }
-}, 120000);
+}, 300000);

@@ -1,7 +1,8 @@
 import axios from "axios";
 import WeatherModel from "../models/weatherDB.js";
 import { locations } from "../Static/locations.js";
-// setInterval(() => {
+
+//Not using this code made for testing then shifted this to app.js inside set interval
 const upsertData = async (req, res) => {
   try {
     for (var i = 0; i < locations.length; i++) {
